@@ -1,5 +1,3 @@
-# ios-guidlines
-
 OBJECTIVE-C
 ===========
 
@@ -61,7 +59,10 @@ array = @[@"1", @"2", @"3"];
 array[0] = @"0";
 
 // Dictionary
-dict = @{ @"key" : @"Value" };
+dict = @{
+	@"key": @"Value",
+	@"key2": @"Value 2"
+};
 dict[@"key"] = @"New value"
 
 // Numbers as NSNumber
