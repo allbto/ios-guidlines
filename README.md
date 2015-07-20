@@ -20,11 +20,11 @@ OBJECTIVE-C
 
 ```objective-c
 
-- (void)nameOfMyMethod:(NSString*)str forUser:(User*)user withPermissions:(NSArray*)permissions
+- (void)nameOfMyMethod:(NSString *)str forUser:(User *)user withPermissions:(NSArray *)permissions
 {
-	NSString*	arg1 = @"Arg1";
-	NSArray*	arg2 = @[@"1", @"2", @"3", @"4"];
-	SomeType*	arg3 = nil;
+	NSString	*arg1 = @"Arg1";
+	NSArray		*arg2 = @[@"1", @"2", @"3", @"4"];
+	SomeType	*arg3 = nil;
 
 	if (user != nil) {
 		arg3 = SomeValue;
@@ -41,7 +41,6 @@ OBJECTIVE-C
 * Braces are put after new line for `class`, method, function declaration.
 * Braces are put on the same line for `if` `else if` `else`, `for`, `switch` statements
 * Arguments are aligned according to the longest type name, so the names always start on the same column
-* Whether you put the `*` after the type name or before the name of the var doesn't matter as long as it's the same in the whole function
 * Arguments are preferably set at the beginning of the function if possible, even if they have to be set to nil, and set later, like `arg3`
 * Jump a ligne after arguments declaration
 
