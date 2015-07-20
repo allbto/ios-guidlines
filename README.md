@@ -66,6 +66,7 @@ dict[@"key"] = @"New value"
 
 // Numbers as NSNumber
 num = @(3.14);
+// Use () Preferably
 
 // Bool as NSNumber
 isTrue = @YES // Or @NO
