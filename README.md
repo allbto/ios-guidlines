@@ -29,7 +29,8 @@ OBJECTIVE-C
 	if (user != nil) {
 		arg3 = SomeValue;
 		// ...
-	} else if ([str isEqualToString:@"str"]) {
+	} else if ( [str isEqualToString:@"str"] &&
+				([self someAction:str] || [self someOtherAction:str]) ) {
 		// ...
 	} else {
 		// ...
@@ -100,8 +101,8 @@ self.foo = YES;
 	// ...
 }
 
-self.someAction;	// Wrong!
-[self someAction];	// Right!
+self.someAction;	// Wrong
+[self someAction];	// Right
 
 ```
 
