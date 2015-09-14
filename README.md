@@ -1,6 +1,8 @@
 OBJECTIVE-C
 ===========
 
+Just few objc additions to [these guidelines](https://github.com/futurice/ios-good-practices)
+
 ### Header
 
 * Provide full path for libraries header
