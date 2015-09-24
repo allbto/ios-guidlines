@@ -88,7 +88,7 @@ extension Person: NameOfProtocol
 * Braces are put on the same line for variable with convenience getter/setter/setter notifications, `if` `else if` `else`, `for`, `while`, `do catch`, `switch` statements
 * Private function and variables are marked with an underscore before the name
 * Functions that only return a value without taking parameters should be written as variable with convenience getter. Like `name` in the example
-
+* Protocol are always implemented in an extension, can be in the same file or separated file, should then be named `MyClass+NameOfProtocol.swift`
 
 
 
@@ -141,7 +141,7 @@ OBJECTIVE-C
 
 ### Code
 
-* Use subscript when possible
+* Use Objective-C Literals when possible
 
 ```objective-c
 
