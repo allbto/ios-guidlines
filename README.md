@@ -1,7 +1,99 @@
+GUIDELINES
+==========
+
+Inspired by [those guidelines](https://github.com/futurice/ios-good-practices), here is how I stucture my code.
+
+SWIFT
+=====
+
+### Syntax
+
+#### A proper class should look like this :
+
+```swift
+
+class Person: ParentClass
+{
+	// MARK: Properties
+
+	var firstName: String
+	var lastName: String
+	//...
+
+	// MARK: Convenience
+
+	var name: String { return "\(firstName) \(lastName)" }
+
+	var isCurrentUser: Bool {
+		// Computing
+		return result
+	}
+
+	//...
+
+	// MARK: Private properties
+
+	private var _isUser: Bool
+	//...
+
+	// MARK: Life cycle
+
+	init(firstName: String, lastName: String, isUser: Bool)
+	{
+		self.firstName = firstName
+		self.lastName = lastName
+		self._isUser = isUser
+	}
+
+	deinit
+	{
+		//...
+	}
+
+	//...
+
+	// MARK: Actions
+
+	func doSomethingGreat()
+	{
+		//...
+	}
+
+	//...
+
+	// MARK: Private
+
+	private func _doSomethingPrivately()
+	{
+		//...
+	}
+
+	//...
+}
+
+// MARK: NameOfProtocol
+extension Person: NameOfProtocol
+{
+	func protocolFunction()
+	{
+		//...
+	}
+
+	//...
+}
+
+```
+
+* Braces are put after a new line for `class`, `struct`, `enum`, `extension` and `func` declaration.
+* Braces are put on the same line for variable with convenience getter/setter/setter notifications, `if` `else if` `else`, `for`, `while`, `do catch`, `switch` statements
+* Private function and variables are marked with an underscore before the name
+* Functions that only return a value without taking parameters should be written as variable with convenience getter. Like `name` in the example
+
+
+
+
 OBJECTIVE-C
 ===========
-
-Just few objc additions to [these guidelines](https://github.com/futurice/ios-good-practices)
 
 ### Header
 
@@ -107,6 +199,8 @@ self.someAction;	// Wrong
 [self someAction];	// Right
 
 ```
+
+
 
 
 
