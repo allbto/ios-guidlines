@@ -1,40 +1,207 @@
 GUIDELINES
 ==========
 
-Inspired by [those guidelines](https://github.com/futurice/ios-good-practices), here is how I stucture my code.
+Inspired by [those guidelines](https://github.com/futurice/ios-good-practices) and [Ray Wenderlich Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).        
+So here is how I stucture my code.
 
 SWIFT
 =====
 
 ### Syntax
 
-#### A proper class should look like this :
+#### A `class` is declared `final` unless designed to be overriden
+
+```swift
+class MyClassToOverride
+{
+    ...
+}
+
+final class MyFinalClass: MyClassToOverride
+{
+    ...
+}
+```
+
+#### Properties are declared with `let` unless designed to be mutable
+
+```swift
+// Immutable
+let bestFriends = [userA, userB]
+
+// Mutable
+var primeNumbers = [2, 3, 5, 7, 11]
+
+primeNumbers.append(13)
+primeNumbers.append(17)
+```
+
+#### Braces are put after a new line for `class`, `struct`, `enum`, `extension`, `protocol` and `func` declaration.
+
+```swift
+protocol MyClassProtocol
+{
+    ...
+}
+
+final class MyClass
+{
+    enum MyClassEnum
+    {
+        ...
+    }
+    
+    func doSomethingInteresting()
+    {
+        ...
+    }
+}
+
+extension MyClass: MyClassProtocol
+{
+    ...
+}
+```
+
+#### Braces are put on the same line for computed properties or variable with specific getter/setter and `if` `else if` `else`, `for`, `while`, `repeat`, `do catch`, `switch` statements
+
+```swift
+// Computed properties
+var color: UIColor {
+    return .blackColor()
+}
+
+// Variable with getter/setter
+var color: UIColor {
+    get {
+        return someColor
+    }
+    
+    set {
+        someColor = newValue
+    }
+}
+
+// if, else
+if something {
+    ...
+} else if somethingElse {
+    ...
+} else {
+    ...
+}
+
+// Complexe switch
+switch type {
+    case .SomeType:
+        doSomething()
+        ...
+        
+    case .SomeOtherType:
+        doSomethingElse()
+        ...
+        
+    default:
+        break
+}
+
+// Simple switch
+switch color {
+    case .White:    return "FFFFFF"
+    case .Black:    return "000000"
+    case .Red:      return "FF0000"
+    default:        return nil
+}
+
+// do, catch
+do {
+    try somethingDangerous()
+} catch e {
+    print(e)
+}
+```
+
+#### Private function and variables are marked with an underscore before the name
+
+```swift
+final class MyClass
+{
+    // MARK: Properties
+
+    var showUser: Bool
+
+    // MARK: Private Properties
+    
+    private var _isUser: Bool
+    
+    // MARK: Actions
+    
+    func doSomething()
+    {
+        ...
+    }
+    
+    // MARK: Private
+    
+    func _doSomethingPrivately()
+    {
+        ...
+    }
+}
+```
+
+#### A function that only return a value without taking parameters should be written as computed property
+
+```
+var color: UIColor {
+    return .blackColor()
+}
+
+func color(alpha alpha: CGFloat) -> UIColor
+{
+    return UIColor.blackColor().colorWithAlphaComponent(alpha)
+}
+```
+
+#### Other rules
+
+* Protocol are always implemented in an extension. It can be in the same file or separated file, in this case it should be named `MyClassNameOfProtocol.swift`
+
+
+#### So a proper `class` should look like this :
 
 ```swift
 
-class Person: ParentClass
+final class Person: ParentClass
 {
 	// MARK: Properties
 
-	var firstName: String
-	var lastName: String
-	//...
+	var user: User
 
-	// MARK: Convenience
+	// MARK: Lazy properties
+	
+	// Auto-closured lazy property
+	lazy var friends: [Friend] = user.friends()
+	
+	// Normal lazy property
+	lazy var filteredFriends = {
+	    let friends = user.friends()
+	    
+	    return friends.filter { $0.isActive == true }
+	}()
 
-	var name: String { return "\(firstName) \(lastName)" }
+	// MARK: Private properties
+
+	private var _isUser: Bool
+
+	// MARK: Computed Properties
+
+	var fullName: String { return "\(firstName) \(lastName)" }
 
 	var isCurrentUser: Bool {
 		// Computing
 		return result
 	}
-
-	//...
-
-	// MARK: Private properties
-
-	private var _isUser: Bool
-	//...
 
 	// MARK: Life cycle
 
@@ -47,28 +214,22 @@ class Person: ParentClass
 
 	deinit
 	{
-		//...
+		...
 	}
-
-	//...
 
 	// MARK: Actions
 
 	func doSomethingGreat()
 	{
-		//...
+		...
 	}
-
-	//...
 
 	// MARK: Private
 
 	private func _doSomethingPrivately()
 	{
-		//...
+		...
 	}
-
-	//...
 }
 
 // MARK: NameOfProtocol
@@ -76,20 +237,11 @@ extension Person: NameOfProtocol
 {
 	func protocolFunction()
 	{
-		//...
+		...
 	}
-
-	//...
 }
 
 ```
-
-* Braces are put after a new line for `class`, `struct`, `enum`, `extension` and `func` declaration.
-* Braces are put on the same line for variable with convenience getter/setter/setter notifications, `if` `else if` `else`, `for`, `while`, `do catch`, `switch` statements
-* Private function and variables are marked with an underscore before the name
-* Functions that only return a value without taking parameters should be written as variable with convenience getter. Like `name` in the example
-* Protocol are always implemented in an extension, can be in the same file or separated file, should then be named `MyClass+NameOfProtocol.swift`
-
 
 
 OBJECTIVE-C
