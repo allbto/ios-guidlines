@@ -152,11 +152,13 @@ final class MyClass
 
 #### A function that only return a value without taking parameters should be written as computed property
 
-```
+```swift
+// Simple accessor
 var color: UIColor {
     return .blackColor()
 }
 
+// Accessor with parameter
 func color(alpha alpha: CGFloat) -> UIColor
 {
     return UIColor.blackColor().colorWithAlphaComponent(alpha)
