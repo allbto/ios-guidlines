@@ -12,13 +12,11 @@ SWIFT
 #### A `class` is declared `final` unless designed to be overriden
 
 ```swift
-class MyClassToOverride
-{
+class MyClassToOverride {
     ...
 }
 
-final class MyFinalClass: MyClassToOverride
-{
+final class MyFinalClass: MyClassToOverride {
     ...
 }
 ```
@@ -36,39 +34,37 @@ primeNumbers.append(13)
 primeNumbers.append(17)
 ```
 
-#### Braces are put after a new line for `class`, `struct`, `enum`, `extension`, `protocol` and `func` declaration.
+#### Braces are put on the same line as the statement
 
 ```swift
-protocol MyClassProtocol
-{
+// Protocol
+protocol MyClassProtocol {
     ...
 }
 
-final class MyClass
-{
-    enum MyClassEnum
-    {
+// Class
+final class MyClass {
+
+	// Enum
+    enum MyClassEnum {
         ...
     }
     
-    func doSomethingInteresting()
-    {
+    // Func
+    func doSomethingInteresting() {
         ...
     }
+
 }
 
-extension MyClass: MyClassProtocol
-{
+// Extension
+extension MyClass: MyClassProtocol {
     ...
 }
-```
 
-#### Braces are put on the same line for computed properties or variable with specific getter/setter and `if` `else if` `else`, `for`, `while`, `repeat`, `do catch`, `switch` statements
-
-```swift
 // Computed properties
 var color: UIColor {
-    return .blackColor()
+    return .black
 }
 
 // Variable with getter/setter
@@ -124,8 +120,7 @@ do {
 #### Private function and variables are marked with an underscore before the name
 
 ```swift
-final class MyClass
-{
+final class MyClass {
     // MARK: Properties
 
     var showUser: Bool
@@ -136,15 +131,13 @@ final class MyClass
     
     // MARK: Actions
     
-    func doSomething()
-    {
+    func doSomething() {
         ...
     }
     
     // MARK: Private
     
-    func _doSomethingPrivately()
-    {
+    func _doSomethingPrivately() {
         ...
     }
 }
@@ -155,13 +148,12 @@ final class MyClass
 ```swift
 // Simple accessor
 var color: UIColor {
-    return .blackColor()
+    return .black
 }
 
 // Accessor with parameter
-func color(alpha alpha: CGFloat) -> UIColor
-{
-    return UIColor.blackColor().colorWithAlphaComponent(alpha)
+func color(alpha alpha: CGFloat) -> UIColor {
+    return UIColor.black.withAlphaComponent(alpha)
 }
 ```
 
@@ -169,16 +161,16 @@ func color(alpha alpha: CGFloat) -> UIColor
 
 * Protocol are always implemented in an extension. It can be in the same file or separated file, in this case it should be named `MyClassNameOfProtocol.swift`
 
-
 #### So a proper `class` should look like this :
 
 ```swift
 
-final class Person: ParentClass
-{
+final class Person: ParentClass {
+
 	// MARK: Properties
 
-	var user: User
+	let firstName: String
+	let lastName: String
 
 	// MARK: Lazy properties
 	
@@ -194,9 +186,9 @@ final class Person: ParentClass
 
 	// MARK: Private properties
 
-	private var _isUser: Bool
+	private let _isUser: Bool
 
-	// MARK: Computed Properties
+	// MARK: Getters
 
 	var fullName: String { return "\(firstName) \(lastName)" }
 
@@ -207,44 +199,77 @@ final class Person: ParentClass
 
 	// MARK: Life cycle
 
-	init(firstName: String, lastName: String, isUser: Bool)
-	{
+	init(firstName: String, lastName: String, isUser: Bool) {
 		self.firstName = firstName
 		self.lastName = lastName
 		self._isUser = isUser
 	}
 
-	deinit
-	{
+	deinit {
 		...
 	}
 
 	// MARK: Actions
 
-	func doSomethingGreat()
-	{
+	func doSomethingGreat() {
 		...
 	}
 
 	// MARK: Private
 
-	private func _doSomethingPrivately()
-	{
+	private func _doSomethingPrivately() {
 		...
 	}
+
 }
 
 // MARK: NameOfProtocol
-extension Person: NameOfProtocol
-{
-	func protocolFunction()
-	{
+extension Person: NameOfProtocol {
+
+	func protocolFunction() {
 		...
 	}
-}
 
+}
 ```
 
+#### View Controller
+
+```swift
+final class MyViewController: UIViewController {
+
+	// MARK: Properties
+
+	var onComplete: (() -> Void)?
+
+	var name: String? {
+		didSet {
+			_nameLabel.text = name
+		}
+	}
+
+	// MARK: Subviews
+
+	private var _nameLabel: UILabel!
+
+	// MARK: Life cycle
+
+	override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Name label
+        _nameLabel = UILabel()
+        ...
+    }
+
+	// MARK: Private
+
+	private func _privateAction() {
+		...
+	}
+
+}
+```
 
 OBJECTIVE-C
 ===========
@@ -353,9 +378,4 @@ self.someAction;	// Wrong
 [self someAction];	// Right
 
 ```
-
-
-
-
-
 
