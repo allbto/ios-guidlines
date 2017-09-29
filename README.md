@@ -2,14 +2,14 @@ GUIDELINES
 ==========
 
 Inspired by [those guidelines](https://github.com/futurice/ios-good-practices) and [Ray Wenderlich Swift Style Guide](https://github.com/raywenderlich/swift-style-guide).        
-So here is how I stucture my code.
+So here is how I structure my code.
 
 SWIFT
 =====
 
 ### Syntax
 
-#### A `class` is declared `final` unless designed to be overriden
+#### A `class` is declared `final` unless designed to be overridden
 
 ```swift
 class MyClassToOverride {
@@ -137,7 +137,7 @@ final class MyClass {
     
     // MARK: Private
     
-    func _doSomethingPrivately() {
+    private func _doSomethingPrivately() {
         ...
     }
 }
@@ -167,68 +167,68 @@ func color(alpha alpha: CGFloat) -> UIColor {
 
 final class Person: ParentClass {
 
-	// MARK: Properties
-
-	let firstName: String
-	let lastName: String
-
-	// MARK: Lazy properties
-	
-	// Auto-closured lazy property
-	lazy var friends: [Friend] = user.friends()
-	
-	// Normal lazy property
-	lazy var filteredFriends = {
-	    let friends = user.friends()
-	    
-	    return friends.filter { $0.isActive == true }
-	}()
-
-	// MARK: Private properties
-
-	private let _isUser: Bool
-
-	// MARK: Getters
-
-	var fullName: String { return "\(firstName) \(lastName)" }
-
-	var isCurrentUser: Bool {
-		// Computing
-		return result
-	}
-
-	// MARK: Life cycle
-
-	init(firstName: String, lastName: String, isUser: Bool) {
-		self.firstName = firstName
-		self.lastName = lastName
-		self._isUser = isUser
-	}
-
-	deinit {
-		...
-	}
-
-	// MARK: Actions
-
-	func doSomethingGreat() {
-		...
-	}
-
-	// MARK: Private
-
-	private func _doSomethingPrivately() {
-		...
-	}
+    // MARK: Properties
+    
+    let firstName: String
+    let lastName: String
+    
+    // MARK: Lazy properties
+    
+    // Auto-closured lazy property
+    lazy var friends: [Friend] = user.friends()
+    
+    // Normal lazy property
+    lazy var filteredFriends = {
+        let friends = user.friends()
+        
+        return friends.filter { $0.isActive == true }
+    }()
+    
+    // MARK: Private properties
+    
+    private let _isUser: Bool
+    
+    // MARK: Getters
+    
+    var fullName: String { return "\(firstName) \(lastName)" }
+    
+    var isCurrentUser: Bool {
+        // Computing
+        return result
+    }
+    
+    // MARK: Life cycle
+    
+    init(firstName: String, lastName: String, isUser: Bool) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self._isUser = isUser
+    }
+    
+    deinit {
+        ...
+    }
+    
+    // MARK: Actions
+    
+    func doSomethingGreat() {
+        ...
+    }
+    
+    // MARK: Private
+    
+    private func _doSomethingPrivately() {
+        ...
+    }
 
 }
 
 // MARK: NameOfProtocol
 extension Person: NameOfProtocol {
 
-	func protocolFunction() {
-		...
-	}
+    func protocolFunction() {
+        ...
+    }
 
 }
 ```
@@ -238,35 +238,35 @@ extension Person: NameOfProtocol {
 ```swift
 final class MyViewController: UIViewController {
 
-	// MARK: Properties
-
-	var onComplete: (() -> Void)?
-
-	var name: String? {
-		didSet {
-			_nameLabel.text = name
-		}
-	}
-
-	// MARK: Subviews
-
-	private var _nameLabel: UILabel!
-
-	// MARK: Life cycle
-
-	override func viewDidLoad() {
+    // MARK: Properties
+    
+    var onComplete: (() -> Void)?
+    
+    var name: String? {
+        didSet {
+            _nameLabel.text = name
+        }
+    }
+    
+    // MARK: Subviews
+    
+    private var _nameLabel: UILabel!
+    
+    // MARK: Life cycle
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Name label
         _nameLabel = UILabel()
         ...
     }
-
-	// MARK: Private
-
-	private func _privateAction() {
-		...
-	}
+    
+    // MARK: Private
+    
+    private func _privateAction() {
+        ...
+    }
 
 }
 ```
@@ -289,7 +289,7 @@ OBJECTIVE-C
 
 ### Syntax
 
-#### A proper method should look like this :
+#### A proper method should look like this:
 
 ```objective-c
 
@@ -316,7 +316,7 @@ OBJECTIVE-C
 * Braces are put on the same line for `if` `else if` `else`, `for`, `switch` statements
 * Arguments are aligned according to the longest type name, so the names always start on the same column
 * Arguments are preferably set at the beginning of the function if possible, even if they have to be set to nil, and set later, like `arg3`
-* Jump a ligne after arguments declaration
+* Jump a line after arguments declaration
 
 ### Code
 
